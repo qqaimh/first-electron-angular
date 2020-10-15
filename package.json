@@ -66,8 +66,7 @@
     "files": [
       "dist/**/*",
       "./main.js",
-      "./main.js.map",
-      "./icon.jpg"
+      "./main.js.map"
     ],
     "nsis": {
       "oneClick": false,
@@ -78,7 +77,7 @@
       "installerHeaderIcon": "build/.icon-ico/icon.ico",
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true,
-      "shortcutName": "name"
+      "shortcutName": "Tony"
     },
     "dmg": {
       "contents": [
@@ -104,6 +103,7 @@
         {
           "target": "nsis",
           "arch": [
+            "x64",
             "ia32"
           ]
         }
