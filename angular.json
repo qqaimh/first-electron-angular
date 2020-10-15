@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "first-electron-angular"
+    }
+  },
+  "defaultProject": "first-electron-angular",
+  "cli": {
+    "analytics": "33480078-00a6-4f8f-8d93-fa7d8d7111b4"
+  }
 }
