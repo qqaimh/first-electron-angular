@@ -3,7 +3,6 @@ import { app, BrowserWindow, screen, ipcMain } from 'electron';
 let win: BrowserWindow = null;
 
 function createWindow(): BrowserWindow {
-
     // Create the browser window.
     win = new BrowserWindow({
         width: 800,
@@ -45,14 +44,13 @@ try {
     ipcMain.on('create-folder', (evt, arg) => {
         console.log('ipcMain');
         console.log(arg);
-        evt.sender.send('create-folder-result', { msg: 'finished!' })
+        evt.sender.send('create-folder-result', { msg: 'finished!' });
     });
 
 } catch (e) {
     // Catch Error
     // throw e;
 }
-
 
 try {
     require('electron-reloader')(module, {});

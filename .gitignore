@@ -6,6 +6,7 @@
 /out-tsc
 /main.js.map
 /main.js
+/build
 # Only exists if Bazel was run
 /bazel-out
 
