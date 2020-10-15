@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { remote, ipcRenderer } from 'electron';
+import { ElectronService } from 'ngx-electron';
 
 @Component({
   selector: 'app-root',
@@ -11,18 +12,19 @@ export class AppComponent {
   ipcRender: typeof ipcRenderer;
   fs
   path
-  constructor(){
+  constructor(private electronService: ElectronService,){
+    this.fs = window.require('fs');
+    this.path = window.require('path');
     this.remote = window.require('electron').remote;
     this.ipcRender = window.require('electron').ipcRenderer;
+    this.electronService.ipcRenderer.on('create-folder-result', (event, data) => {
+      console.log(data);
+    })
   }
 
   sendMsg(){
-    this.fs = window.require('fs');
-    this.path = window.require('path');
-    this.ipcRender.send('create-folder');
-    this.ipcRender.on('create-folder-result', function(event, data) {
-      console.log(data);//finished!
-    })
+    this.electronService.ipcRenderer.send('create-folder', {data: '2222'});
+   
   }
 
   print() {

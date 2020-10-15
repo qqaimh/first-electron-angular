@@ -8,26 +8,19 @@ function createWindow(): BrowserWindow {
     win = new BrowserWindow({
         width: 800,
         height: 500,
+        icon: './src/favicon.ico',
         webPreferences: {
             nodeIntegration: true,
         },
     });
 
-
     win.loadURL('http://localhost:4200');
 
-    //win.loadURL(url.format({
-    //  pathname: path.join(__dirname, 'dist/index.html'),
-    //  protocol: 'file:',
-    //  slashes: true
-    //}));
     win.webContents.openDevTools();
     return win;
 }
 
 try {
-
-    // This method will be called when Electron has finished
     // initialization and is ready to create browser windows.
     // Some APIs can only be used after this event occurs.
     app.on('ready', createWindow);
@@ -51,10 +44,16 @@ try {
 
     ipcMain.on('create-folder', (evt, arg) => {
         console.log('ipcMain');
+        console.log(arg);
         evt.sender.send('create-folder-result', { msg: 'finished!' })
-    })
+    });
 
 } catch (e) {
     // Catch Error
     // throw e;
 }
+
+
+try {
+    require('electron-reloader')(module, {});
+} catch (_) {}
