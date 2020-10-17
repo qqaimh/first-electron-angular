@@ -32,4 +32,8 @@ export class AppComponent {
     console.log('path:', this.path.join(__dirname, 'dist/index.html'));
 
   }
+
+  change() {
+    this.electronService.ipcRenderer.send('change', {data: '2222'});
+  }
 }
